@@ -1,0 +1,143 @@
+{
+  "connectorId": "pingOneAuthConnector",
+  "companyId": "singularkey",
+  "customerId": "10f12c1f505ad71b5fdfa94c7f2f251a",
+  "name": "PingOne Auth",
+  "serviceName": "microservice-pingone-auth",
+  "connectorType": "authentication",
+  "description":
+    "PingOne Authentication using various OAuth flows.",
+  "connectorDetails": null,
+  "detailImage": null,
+  "connectorCategories": [{
+      "name": "Authentication",
+      "value": "authentication"
+  }],
+  "metadata": {
+      "colors": {
+          "canvas": "#FF0000",
+          "dark": "#171D21"
+      },
+      "logos": {
+          "canvas": {
+              "imageFileName": "pingIdentity.svg"
+          }
+      }
+  },
+  "sections": [{
+      "name": "PingOne Environment",
+      "value": "pingOneEnvironment"
+  }],
+  "flowSections": [{
+      "name": "General",
+      "value": "general"
+  }],
+  "visiblity": "public",
+  "status": "published",
+  "createdDate": 1636587092546,
+  "properties": {
+      "authorizeURL": {
+          "displayName": "Authorize URL",
+          "preferredControlType": "textField",
+          "required": true,
+          "developerNotes": "PingOne Authorize URL"
+      },
+      "clientId": {
+          "displayName": "Client ID",
+          "preferredControlType": "textField",
+          "required": true,
+          "developerNotes": "Client ID for PingOne App"
+      },
+      "redirectURI": {
+          "displayName": "Redirect URI",
+          "preferredControlType": "textField",
+          "required": true,
+          "developerNotes": "Redirect URI for PingOne App",
+          "value": "http://localhost:8000"
+      },
+      "username": {
+          "enableParameters": true,
+          "preferredControlType": "textField",
+          "required": true,
+          "developerNotes": "Username to authenticate"
+      },
+      "password": {
+          "displayName": "Password",
+          "enableParameters": true,
+          "preferredControlType": "textField",
+          "required": true,
+          "developerNotes": "Password to authenticate"
+      }
+  },
+  "capabilities": {
+      "authCodePKCEFlow": {
+          "type": "action",
+          "title": "Auth User - Auth Code PKCE Flow",
+          "subTitle": "Authenticate user with password via Auth Code PKCE Flow",
+          "inputs": [],
+          "respondToUser": false,
+          "userViews": [],
+          "flowConfigView": {
+              "items": [{
+                  "propertyName": "username"
+              }, {
+                  "propertyName": "password"
+              }]
+          },
+          "payloadInputSchema": {
+              "default": {
+                  "type": "object",
+                  "properties": {
+                      "properties": {
+                          "type": "object",
+                          "properties": {
+                              "username": {
+                                  "type": "string",
+                                  "description": "The username"
+                              },
+                              "password": {
+                                  "type": "string",
+                                  "description": "The password"
+                              }
+                          },
+                          "required": ["username", "password"]
+                      }
+                  },
+                  "example": {
+                      "properties": {
+                          "username": "joesmith",
+                          "password": "password"
+                      }
+                  }
+              }
+          },
+          "localOutputSchema": {
+              "output": {
+                  "type": "object",
+                  "example": {
+                      "accessToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImRlZmF1bHQifQ...",
+                      "sessionToken": "c08b137f-4716-4ce6-8be5-f4e3f5c91f45"
+                  },
+                  "properties": {
+                      "accessToken": {
+                          "type": "string"
+                      },
+                      "sessionToken": {
+                        "type": "string"
+                    }
+                  },
+                  "required": ["accessToken", "sessionToken"]
+              }
+          }
+      }
+  },
+  "accountConfigView": {
+        "items": [
+            { "propertyName": "authorizeURL" },
+            { "propertyName": "clientId" },
+            { "propertyName": "redirectURI" }
+        ]
+  },
+  "credentialsView": null,
+  "updatedDate": 1636587092570
+}

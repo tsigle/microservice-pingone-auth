@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "autoAttachChildProcesses": true,
+            "outputCapture": "std",
+            "env": {
+                "HTTPS_ENABLED": "false",
+                "SK_CONNECTOR_WEBSERVER_SUPPRESS":"true"
+            },
+            "program": "${workspaceFolder}/index.js"
+        }
+    ]
+}
